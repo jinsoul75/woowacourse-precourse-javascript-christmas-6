@@ -34,6 +34,7 @@ class EventPlannerController {
       orderList.contains();
       orderList.isValidNumber();
       orderList.isDuplicate();
+      orderList.isOverTwenty();
     } catch (error) {
       OutputView.printError(error);
       await this.getOrderList();
