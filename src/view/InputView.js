@@ -6,7 +6,10 @@ const InputView = {
     const expectedDate = await Console.readLineAsync(ASK_MESSAGES.expectedDate);
     return expectedDate;
   },
-  // ...
+  async readOrder() {
+    const orderList = await Console.readLineAsync(ASK_MESSAGES.orderList);
+    return orderList;
+  },
 };
 
 export default InputView;
