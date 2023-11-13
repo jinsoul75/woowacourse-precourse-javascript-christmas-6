@@ -35,6 +35,7 @@ class EventPlannerController {
       orderList.isValidNumber();
       orderList.isDuplicate();
       orderList.isOverTwenty();
+      orderList.isOnlyDrinks();
     } catch (error) {
       OutputView.printError(error);
       await this.getOrderList();

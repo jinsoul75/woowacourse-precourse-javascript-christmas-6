@@ -1,6 +1,6 @@
 import NUMBERS from '../constants/numbers/numbers.js';
 import ERROR_MESSAGES from '../constants/messages/errorMessages.js';
-import MENU from '../constants/menu/menu.js';
+import { MENU, DRINK } from '../constants/menu/menu.js';
 import { getSecondLevelKeys } from '../utils/ObjectToArray.js';
 
 class OrderList {
@@ -11,11 +11,6 @@ class OrderList {
     this.orderMenu = [...new Map(list).keys()];
     this.orderQuentity = [...new Map(list).values()];
   }
-
-  // - 메뉴 개수의 합이 20개를 초과하는 경우
-  // `[ERROR] 메뉴 개수의 합이 20개를 초과할 수 없습니다. 다시 입력해 주세요.`
-  // - 음료만 주문한 경우
-  // `[ERROR] 음료만 주문할 수 없습니다. 다시 입력해 주세요.`
 
   contains() {
     const menuList = getSecondLevelKeys(MENU);
@@ -49,6 +44,14 @@ class OrderList {
     );
     if (sumQuentity > NUMBERS.maxMenuQuentity) {
       throw Error(ERROR_MESSAGES.invalidOrder);
+    }
+  }
+
+  isOnlyDrinks() {
+    const drinks = Object.keys(DRINK);
+    const isOnly = menu => drinks.includes(menu);
+    if (this.orderMenu.every(isOnly)) {
+      throw Error(ERROR_MESSAGES.onlyDrinks);
     }
   }
 }

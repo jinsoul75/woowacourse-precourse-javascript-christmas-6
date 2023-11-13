@@ -16,12 +16,10 @@ const DESERT = Object.freeze({
   아이스크림: 5000,
 });
 
-const DRINK = Object.freeze({
+export const DRINK = Object.freeze({
   제로콜라: 3000,
   레드와인: 60000,
   샴페인: 25000,
 });
 
-const MENU = [APPETIZER, MAIN, DESERT, DRINK];
-
-export default MENU;
+export const MENU = [APPETIZER, MAIN, DESERT, DRINK];
