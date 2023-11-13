@@ -7,8 +7,8 @@ class OrderList {
 
   constructor(list) {
     this.#list = list;
-    this.orderMenu = Object.keys(list);
-    this.orderQuentity = Object.values(list);
+    this.orderMenu = [...new Map(list).keys()];
+    this.orderQuentity = [...new Map(list).values()];
   }
 
   // - 메뉴판에 없는 메뉴 입력시
@@ -23,6 +23,7 @@ class OrderList {
 
   contains() {
     const menuList = getSecondLevelKeys(MENU);
+
     this.orderMenu.forEach(menu => {
       if (!menuList.includes(menu)) {
         throw Error(ERROR_MESSAGES.invalidOrder);
@@ -30,13 +31,20 @@ class OrderList {
     });
   }
 
-  isNumber() {
-    const regex = /^(1[0-9]|20)$/;
+  isValidNumber() {
+    const regex = /^(1[0-9]|20|[1-9])$/;
+
     this.orderQuentity.forEach(quentity => {
       if (!regex.test(quentity)) {
         throw Error(ERROR_MESSAGES.invalidOrder);
       }
     });
+  }
+
+  isDuplicate() {
+    if (this.#list.length !== this.orderMenu.length) {
+      throw Error(ERROR_MESSAGES.invalidOrder);
+    }
   }
 }
 

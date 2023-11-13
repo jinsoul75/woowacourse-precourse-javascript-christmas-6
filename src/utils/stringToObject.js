@@ -1,14 +1,14 @@
 const stringToObject = string => {
   const items = string.replace(/\s/g, '').split(',');
 
-  const resultObject = {};
+  const resultArray = [];
 
   items.forEach(item => {
     const [itemName, quentity] = item.split('-');
-    resultObject[itemName] = quentity;
+    resultArray.push([itemName, quentity]);
   });
 
-  return resultObject;
+  return resultArray;
 };
 
 export default stringToObject;
