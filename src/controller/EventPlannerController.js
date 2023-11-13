@@ -7,6 +7,7 @@ import addCommasToNumber from '../utils/addCommasToNumber.js';
 
 import InputView from '../view/InputView.js';
 import OutputView from '../view/OutputView.js';
+import NUMBERS from '../constants/numbers/numbers.js';
 
 class EventPlannerController {
   constructor() {
@@ -20,6 +21,7 @@ class EventPlannerController {
     await this.getOrderList();
     OutputView.printMenu(this.orderList);
     this.getTotalPriceBeforeDiscount(this.orderList);
+    this.getFreeGift(this.totalPriceBeforeDiscount);
   }
 
   async getExpectedDate() {
@@ -60,6 +62,17 @@ class EventPlannerController {
     const priceWithComma = addCommasToNumber(this.totalPriceBeforeDiscount);
 
     OutputView.printTotalPriceBeforeDiscount(priceWithComma);
+  }
+
+  getFreeGift(totalPriceBeforeDiscount) {
+    OutputView.printFreeGiftHeader();
+
+    if (totalPriceBeforeDiscount > NUMBERS.minFreeGiftPrice) {
+      OutputView.printFreeGift();
+      return;
+    }
+
+    OutputView.printNothing();
   }
 }
 

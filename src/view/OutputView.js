@@ -22,6 +22,18 @@ const OutputView = {
     Console.print(`${price}원`);
   },
 
+  printFreeGiftHeader() {
+    Console.print(HEADER_MESSAGES.freeGift);
+  },
+
+  printFreeGift() {
+    Console.print(RESULT_MESSAGES.freeGift);
+  },
+
+  printNothing() {
+    Console.print(RESULT_MESSAGES.nothing);
+  },
+
   printError(error) {
     Console.print(`${ERROR_MESSAGES.errorHeader} ${error.message}`);
   },
