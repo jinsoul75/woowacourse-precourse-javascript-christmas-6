@@ -17,6 +17,11 @@ const OutputView = {
     });
   },
 
+  printTotalPriceBeforeDiscount(price) {
+    Console.print(HEADER_MESSAGES.totalPriceBeforeDiscount);
+    Console.print(`${price}원`);
+  },
+
   printError(error) {
     Console.print(`${ERROR_MESSAGES.errorHeader} ${error.message}`);
   },
