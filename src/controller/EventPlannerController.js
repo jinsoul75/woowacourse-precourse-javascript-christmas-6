@@ -12,14 +12,16 @@ class EventPlannerController {
   }
 
   async start() {
-    this.expectedDate = await this.getExpectedDate();
-    this.orderList = await this.getOrderList();
+    await this.getExpectedDate();
+    await this.getOrderList();
+    OutputView.printMenu(this.orderList);
   }
 
   async getExpectedDate() {
     try {
-      const dateInput = await InputView.readDate();
-      const expectedDate = new ExpectedDate(dateInput);
+      this.expectedDate = await InputView.readDate();
+
+      const expectedDate = new ExpectedDate(this.expectedDate);
     } catch (error) {
       OutputView.printError(error);
       await this.getExpectedDate();
@@ -29,13 +31,16 @@ class EventPlannerController {
   async getOrderList() {
     try {
       const orderListInput = await InputView.readOrder();
-      const orderListObj = stringToObject(orderListInput);
-      const orderList = new OrderList(orderListObj);
+      this.orderList = stringToObject(orderListInput);
+      const orderList = new OrderList(this.orderList);
+
       orderList.contains();
       orderList.isValidNumber();
       orderList.isDuplicate();
       orderList.isOverTwenty();
       orderList.isOnlyDrinks();
+
+      OutputView.printIntro(this.expectedDate);
     } catch (error) {
       OutputView.printError(error);
       await this.getOrderList();
