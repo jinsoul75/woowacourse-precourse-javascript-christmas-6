@@ -8,7 +8,7 @@ const OutputView = {
   },
 
   printError(error) {
-    Console.print(`${ERROR_MESSAGES.errorHeader}: ${error.message}`);
+    Console.print(`${ERROR_MESSAGES.errorHeader} ${error.message}`);
   },
 };
 

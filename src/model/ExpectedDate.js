@@ -14,10 +14,10 @@ class ExpectedDate {
       throw Error(ERROR_MESSAGES.dateOutOfRange);
     }
     if (Number.isNaN(Number(date))) {
-      throw Error(ERROR_MESSAGES.notANumber);
+      throw Error(ERROR_MESSAGES.dateOutOfRange);
     }
     if (date.length === 0) {
-      throw Error(ERROR_MESSAGES.emptyInput);
+      throw Error(ERROR_MESSAGES.dateOutOfRange);
     }
   }
 }
