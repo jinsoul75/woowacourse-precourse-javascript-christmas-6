@@ -32,6 +32,7 @@ class EventPlannerController {
       const orderListObj = stringToObject(orderListInput);
       const orderList = new OrderList(orderListObj);
       orderList.contains();
+      orderList.isNumber();
     } catch (error) {
       OutputView.printError(error);
       await this.getOrderList();

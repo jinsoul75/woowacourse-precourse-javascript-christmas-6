@@ -29,6 +29,15 @@ class OrderList {
       }
     });
   }
+
+  isNumber() {
+    const regex = /^(1[0-9]|20)$/;
+    this.orderQuentity.forEach(quentity => {
+      if (!regex.test(quentity)) {
+        throw Error(ERROR_MESSAGES.invalidOrder);
+      }
+    });
+  }
 }
 
 export default OrderList;
