@@ -42,6 +42,10 @@ const OutputView = {
     Console.print(`${RESULT_MESSAGES.dDayDiscount}: -${discountAmount}원`);
   },
 
+  printWeekendDiscount(discountAmount) {
+    Console.print(`${RESULT_MESSAGES.weekendDiscount}: -${discountAmount}원`);
+  },
+
   printError(error) {
     Console.print(`${ERROR_MESSAGES.errorHeader} ${error.message}`);
   },

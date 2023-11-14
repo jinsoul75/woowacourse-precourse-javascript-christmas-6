@@ -3,6 +3,8 @@ const RESULT_MESSAGES = Object.freeze({
   freeGift: '샴페인 1개',
   nothing: '없음',
   dDayDiscount: '크리스마스 디데이 할인',
+  weekdayDiscount: '평일 할인',
+  weekendDiscount: '주말 할인',
 });
 
 export default RESULT_MESSAGES;

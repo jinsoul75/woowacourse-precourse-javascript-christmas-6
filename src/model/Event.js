@@ -1,15 +1,53 @@
 import dDayCalculator from '../utils/dDayCalculator.js';
+import isWeekend from '../utils/isWeekend.js';
+import NUMBERS from '../constants/numbers/numbers.js';
+import { MAIN, DESERT } from '../constants/menu/menu.js';
+import OutputView from '../view/OutputView.js';
 
 class Event {
-  constructor() {
-    this.event = [];
+  constructor(expectedDate, orderList, totalPriceBeforeDiscount) {
+    this.discountAmount = 0;
+    this.expectedDate = expectedDate;
+    this.orderList = orderList;
+    this.totalPriceBeforeDiscount = totalPriceBeforeDiscount;
   }
 
-  getChristmasDday(expectedDate) {
-    // 1일 기준 1000원 이후로 100원씩 증가하는 함수 생성하기
-    const discountAmount = dDayCalculator(expectedDate);
-    return discountAmount;
+  getEvent() {
+    if (this.expectedDate <= NUMBERS.christmasDate) {
+      this.getChristmasDdayDiscount();
+    }
+
+    if (isWeekend(this.expectedDate)) {
+      this.getMainDiscount();
+    } else {
+      this.getDesertDiscount();
+    }
+
+    return this.discountAmount;
   }
+
+  getChristmasDdayDiscount() {
+    const discountAmount = dDayCalculator(this.expectedDate);
+    this.discountAmount += Number(discountAmount);
+    OutputView.printDdayDiscount(discountAmount);
+  }
+
+  getMainDiscount() {
+    let discountAmount = 0;
+
+    this.orderList.forEach(order => {
+      const [menu, quentity] = order;
+
+      if (Object.keys(MAIN).includes(menu)) {
+        discountAmount = NUMBERS.weekDiscountAmount * quentity;
+      }
+    });
+
+    this.discountAmount += Number(discountAmount);
+    OutputView.printWeekendDiscount(discountAmount);
+  }
+
+  getDesertDiscount() {}
 }
 
 export default Event;
@@ -20,9 +58,11 @@ export default Event;
 {
   /* <혜택 내역>
 크리스마스 디데이 할인: -1,200원 => expectedDate
-평일 할인: -4,046원 => 디저트만 => orderlist
-주말 할인 => 메인만 => orderlist
-특별 할인: -1,000원 => 특정 날짜만 => orderlist
+특별 할인: -1,000원 => 특정 날짜만 => expectedDate
+
+평일 할인: -4,046원 => 디저트만 => orderlist,expectedDate
+주말 할인 => 메인만 => orderlist,expectedDate
+
 증정 이벤트: -25,000원  => totalPriceBeforeDiscount  */
 }
 // - 크리스마스 디데이 할인

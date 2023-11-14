@@ -84,10 +84,8 @@ class EventPlannerController {
       return;
     }
 
-    const event = new Event();
-
-    const christmasDdayDiscount = event.getChristmasDday(this.expectedDate);
-    OutputView.printDday(christmasDdayDiscount);
+    const event = new Event(this.expectedDate, this.orderList, this.totalPriceBeforeDiscount);
+    event.getEvent();
   }
 }
 
