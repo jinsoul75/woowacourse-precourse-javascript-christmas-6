@@ -4,6 +4,7 @@ import isSpecialDay from '../utils/isSpecialDay.js';
 import NUMBERS from '../constants/numbers/numbers.js';
 import { MAIN, DESERT } from '../constants/menu/menu.js';
 import OutputView from '../view/OutputView.js';
+import addCommasToNumber from '../utils/addCommasToNumber.js';
 
 class Event {
   constructor(expectedDate, orderList, totalPriceBeforeDiscount) {
@@ -38,7 +39,7 @@ class Event {
   getChristmasDdayDiscount() {
     const discountAmount = dDayCalculator(this.expectedDate);
     this.discountAmount += Number(discountAmount);
-    OutputView.printDdayDiscount(discountAmount);
+    OutputView.printDdayDiscount(addCommasToNumber(discountAmount));
   }
 
   getWeekendDiscount() {
@@ -53,7 +54,7 @@ class Event {
     });
 
     this.discountAmount += Number(discountAmount);
-    OutputView.printWeekendDiscount(discountAmount);
+    OutputView.printWeekendDiscount(addCommasToNumber(discountAmount));
   }
 
   getWeekdayDiscount() {
@@ -68,16 +69,16 @@ class Event {
     });
 
     this.discountAmount += Number(discountAmount);
-    OutputView.printWeekdayDiscount(discountAmount);
+    OutputView.printWeekdayDiscount(addCommasToNumber(discountAmount));
   }
 
   getSpecialDayDiscount() {
-    OutputView.printSepcialDayDiscount(NUMBERS.specialDiscountAmount);
+    OutputView.printSepcialDayDiscount(addCommasToNumber(NUMBERS.specialDiscountAmount));
     this.discountAmount += NUMBERS.specialDiscountAmount;
   }
 
   getFreeGift() {
-    OutputView.printFreeGiftEvent(NUMBERS.freeGiftAmount);
+    OutputView.printFreeGiftEvent(addCommasToNumber(NUMBERS.freeGiftAmount));
     this.discountAmount += NUMBERS.freeGiftAmount;
   }
 }
