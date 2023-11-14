@@ -27,7 +27,7 @@ class EventPlannerController {
     await this.getOrderList();
     OutputView.printMenu(this.orderList);
     this.getTotalPriceBeforeDiscount(this.orderList);
-    this.getFreeGift(this.totalPriceBeforeDiscount);
+    this.getFreeGift();
     this.getEvent();
     OutputView.printTotalDiscountAmount(addCommasToNumber(this.totalDiscountAmount));
     this.getExpectedPaymentAmount();
@@ -37,7 +37,12 @@ class EventPlannerController {
   async getExpectedDate() {
     try {
       this.expectedDate = await InputView.readDate();
+
       const expectedDate = new ExpectedDate(this.expectedDate);
+
+      expectedDate.isInRange();
+      expectedDate.isANumber();
+      expectedDate.isEmpty();
     } catch (error) {
       OutputView.printError(error);
       await this.getExpectedDate();
@@ -71,10 +76,10 @@ class EventPlannerController {
     OutputView.printTotalPriceBeforeDiscount(priceWithComma);
   }
 
-  getFreeGift(totalPriceBeforeDiscount) {
+  getFreeGift() {
     OutputView.printFreeGiftHeader();
 
-    if (totalPriceBeforeDiscount > NUMBERS.minFreeGiftPrice) {
+    if (this.totalPriceBeforeDiscount > NUMBERS.minFreeGiftPrice) {
       OutputView.printFreeGift();
       return;
     }
