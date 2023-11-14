@@ -10,19 +10,19 @@ class ExpectedDate {
 
   isInRange() {
     if (this.#date < NUMBERS.minDate || this.#date > NUMBERS.maxDate) {
-      throw Error(ERROR_MESSAGES.dateOutOfRange);
+      throw Error(ERROR_MESSAGES.invalidDate);
     }
   }
 
   isANumber() {
     if (Number.isNaN(Number(this.#date))) {
-      throw Error(ERROR_MESSAGES.notANumber);
+      throw Error(ERROR_MESSAGES.invalidDate);
     }
   }
 
   isEmpty() {
     if (this.#date.length === 0) {
-      throw Error(ERROR_MESSAGES.emptyInput);
+      throw Error(ERROR_MESSAGES.invalidDate);
     }
   }
 }
