@@ -34,6 +34,14 @@ const OutputView = {
     Console.print(RESULT_MESSAGES.nothing);
   },
 
+  printEvent() {
+    Console.print(HEADER_MESSAGES.event);
+  },
+
+  printDdayDiscount(discountAmount) {
+    Console.print(`${RESULT_MESSAGES.dDayDiscount}: -${discountAmount}원`);
+  },
+
   printError(error) {
     Console.print(`${ERROR_MESSAGES.errorHeader} ${error.message}`);
   },

@@ -1,6 +1,7 @@
 import ExpectedDate from '../model/ExpectedDate.js';
 import OrderList from '../model/OrderList.js';
 import Price from '../model/Price.js';
+import Event from '../model/Event.js';
 
 import stringToObject from '../utils/stringToObject.js';
 import addCommasToNumber from '../utils/addCommasToNumber.js';
@@ -14,6 +15,7 @@ class EventPlannerController {
     this.expectedDate = 0;
     this.orderList = [];
     this.totalPriceBeforeDiscount = 0;
+    this.event = [];
   }
 
   async start() {
@@ -22,6 +24,7 @@ class EventPlannerController {
     OutputView.printMenu(this.orderList);
     this.getTotalPriceBeforeDiscount(this.orderList);
     this.getFreeGift(this.totalPriceBeforeDiscount);
+    this.getEvent();
   }
 
   async getExpectedDate() {
@@ -56,11 +59,9 @@ class EventPlannerController {
 
   getTotalPriceBeforeDiscount(orderList) {
     const price = new Price(orderList);
-
     this.totalPriceBeforeDiscount = price.getTotalPriceBeforeDiscount(orderList);
 
     const priceWithComma = addCommasToNumber(this.totalPriceBeforeDiscount);
-
     OutputView.printTotalPriceBeforeDiscount(priceWithComma);
   }
 
@@ -73,6 +74,20 @@ class EventPlannerController {
     }
 
     OutputView.printNothing();
+  }
+
+  getEvent() {
+    OutputView.printEvent();
+
+    if (this.totalPriceBeforeDiscount < NUMBERS.minEventAmount) {
+      OutputView.printNothing();
+      return;
+    }
+
+    const event = new Event();
+
+    const christmasDdayDiscount = event.getChristmasDday(this.expectedDate);
+    OutputView.printDday(christmasDdayDiscount);
   }
 }
 

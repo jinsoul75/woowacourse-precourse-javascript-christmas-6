@@ -3,6 +3,7 @@ const NUMBERS = Object.freeze({
   maxDate: 31,
   maxMenuQuentity: 20,
   minFreeGiftPrice: 120000,
+  minEventAmount: 10000,
 });
 
 export default NUMBERS;
