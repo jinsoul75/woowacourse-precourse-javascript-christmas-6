@@ -5,6 +5,7 @@ const HEADER_MESSAGES = Object.freeze({
   freeGift: '\n<증정 메뉴>',
   event: '\n<혜택 내역>',
   totalDiscountAmount: '\n<총 혜택 금액>',
+  expectedPaymentAmount: '\n<할인 후 예상 결제 금액>',
 });
 
 export default HEADER_MESSAGES;

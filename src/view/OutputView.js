@@ -62,6 +62,12 @@ const OutputView = {
     Console.print(HEADER_MESSAGES.totalDiscountAmount);
     Console.print(`-${totalDiscountAmount}원`);
   },
+
+  printExpectedPaymentAmount(expectedPaymentAmount) {
+    Console.print(HEADER_MESSAGES.expectedPaymentAmount);
+    Console.print(RESULT_MESSAGES.expectedPaymentAmount(expectedPaymentAmount));
+  },
+
   printError(error) {
     Console.print(`${ERROR_MESSAGES.errorHeader} ${error.message}`);
   },
