@@ -38,7 +38,7 @@ class Event {
 
   getChristmasDdayDiscount() {
     const discountAmount = dDayCalculator(this.expectedDate);
-    this.discountAmount += Number(discountAmount);
+    this.discountAmount -= Number(discountAmount);
     OutputView.printDdayDiscount(addCommasToNumber(discountAmount));
   }
 
@@ -53,7 +53,7 @@ class Event {
       }
     });
 
-    this.discountAmount += Number(discountAmount);
+    this.discountAmount -= Number(discountAmount);
     OutputView.printWeekendDiscount(addCommasToNumber(discountAmount));
   }
 
@@ -68,7 +68,7 @@ class Event {
       }
     });
 
-    this.discountAmount += Number(discountAmount);
+    this.discountAmount -= Number(discountAmount);
     OutputView.printWeekdayDiscount(addCommasToNumber(discountAmount));
   }
 
@@ -79,7 +79,7 @@ class Event {
 
   getFreeGift() {
     OutputView.printFreeGiftEvent(addCommasToNumber(NUMBERS.freeGiftAmount));
-    this.discountAmount += NUMBERS.freeGiftAmount;
+    this.discountAmount -= NUMBERS.freeGiftAmount;
   }
 }
 
