@@ -16,6 +16,7 @@ class EventPlannerController {
     this.orderList = [];
     this.totalPriceBeforeDiscount = 0;
     this.event = [];
+    this.totalDiscountAmount = 0;
   }
 
   async start() {
@@ -25,12 +26,12 @@ class EventPlannerController {
     this.getTotalPriceBeforeDiscount(this.orderList);
     this.getFreeGift(this.totalPriceBeforeDiscount);
     this.getEvent();
+    OutputView.printTotalDiscountAmount(addCommasToNumber(this.totalDiscountAmount));
   }
 
   async getExpectedDate() {
     try {
       this.expectedDate = await InputView.readDate();
-
       const expectedDate = new ExpectedDate(this.expectedDate);
     } catch (error) {
       OutputView.printError(error);
@@ -85,7 +86,7 @@ class EventPlannerController {
     }
 
     const event = new Event(this.expectedDate, this.orderList, this.totalPriceBeforeDiscount);
-    event.getEvent();
+    this.totalDiscountAmount = event.getEvent();
   }
 }
 

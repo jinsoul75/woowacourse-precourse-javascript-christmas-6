@@ -58,6 +58,10 @@ const OutputView = {
     Console.print(`${RESULT_MESSAGES.freeGiftEvent}: -${freeGiftAmount}원`);
   },
 
+  printTotalDiscountAmount(totalDiscountAmount) {
+    Console.print(HEADER_MESSAGES.totalDiscountAmount);
+    Console.print(`-${totalDiscountAmount}원`);
+  },
   printError(error) {
     Console.print(`${ERROR_MESSAGES.errorHeader} ${error.message}`);
   },

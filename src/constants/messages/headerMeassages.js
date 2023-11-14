@@ -4,6 +4,7 @@ const HEADER_MESSAGES = Object.freeze({
   totalPriceBeforeDiscount: '\n<할인 전 총주문 금액>',
   freeGift: '\n<증정 메뉴>',
   event: '\n<혜택 내역>',
+  totalDiscountAmount: '\n<총 혜택 금액>',
 });
 
 export default HEADER_MESSAGES;
