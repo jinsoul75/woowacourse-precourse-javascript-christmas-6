@@ -18,9 +18,9 @@ class Event {
     }
 
     if (isWeekend(this.expectedDate)) {
-      this.getMainDiscount();
+      this.getWeekendDiscount();
     } else {
-      this.getDesertDiscount();
+      this.getWeekdayDiscount();
     }
 
     return this.discountAmount;
@@ -32,7 +32,7 @@ class Event {
     OutputView.printDdayDiscount(discountAmount);
   }
 
-  getMainDiscount() {
+  getWeekendDiscount() {
     let discountAmount = 0;
 
     this.orderList.forEach(order => {
@@ -47,7 +47,20 @@ class Event {
     OutputView.printWeekendDiscount(discountAmount);
   }
 
-  getDesertDiscount() {}
+  getWeekdayDiscount() {
+    let discountAmount = 0;
+
+    this.orderList.forEach(order => {
+      const [menu, quentity] = order;
+
+      if (Object.keys(DESERT).includes(menu)) {
+        discountAmount = NUMBERS.weekDiscountAmount * quentity;
+      }
+    });
+
+    this.discountAmount += Number(discountAmount);
+    OutputView.printWeekdayDiscount(discountAmount);
+  }
 }
 
 export default Event;
