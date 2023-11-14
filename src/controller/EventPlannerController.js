@@ -2,6 +2,7 @@ import ExpectedDate from '../model/ExpectedDate.js';
 import OrderList from '../model/OrderList.js';
 import Price from '../model/Price.js';
 import Event from '../model/Event.js';
+import Badge from '../model/Badge.js';
 
 import stringToObject from '../utils/stringToObject.js';
 import addCommasToNumber from '../utils/addCommasToNumber.js';
@@ -18,6 +19,7 @@ class EventPlannerController {
     this.event = [];
     this.totalDiscountAmount = 0;
     this.expectedPaymentAmount = 0;
+    this.eventBadge = '';
   }
 
   async start() {
@@ -29,6 +31,7 @@ class EventPlannerController {
     this.getEvent();
     OutputView.printTotalDiscountAmount(addCommasToNumber(this.totalDiscountAmount));
     this.getExpectedPaymentAmount();
+    this.getEventBadge(this.expectedPaymentAmount);
   }
 
   async getExpectedDate() {
@@ -92,8 +95,22 @@ class EventPlannerController {
   }
 
   getExpectedPaymentAmount() {
-    this.expectedPaymentAmount = this.totalPriceBeforeDiscount - this.totalDiscountAmount;
+    this.expectedPaymentAmount = this.totalPriceBeforeDiscount + this.totalDiscountAmount;
     OutputView.printExpectedPaymentAmount(addCommasToNumber(this.expectedPaymentAmount));
+  }
+
+  getEventBadge() {
+    const badge = new Badge(this.expectedPaymentAmount);
+    this.eventBadge = badge.getEventBadge();
+
+    OutputView.printEventBadgeHeader();
+
+    if (this.eventBadge) {
+      OutputView.printEventBadge(this.eventBadge);
+      return;
+    }
+
+    OutputView.printNothing();
   }
 }
 

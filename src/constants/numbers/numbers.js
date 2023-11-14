@@ -8,6 +8,9 @@ const NUMBERS = Object.freeze({
   weekDiscountAmount: 2023,
   specialDiscountAmount: 1000,
   freeGiftAmount: 25000,
+  starBadgeAmount: 5000,
+  treeBadgeAmount: 10000,
+  santaBadgeAmount: 20000,
 });
 
 export default NUMBERS;
