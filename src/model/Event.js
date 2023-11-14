@@ -1,5 +1,6 @@
 import dDayCalculator from '../utils/dDayCalculator.js';
 import isWeekend from '../utils/isWeekend.js';
+import isSpecialDay from '../utils/isSpecialDay.js';
 import NUMBERS from '../constants/numbers/numbers.js';
 import { MAIN, DESERT } from '../constants/menu/menu.js';
 import OutputView from '../view/OutputView.js';
@@ -21,6 +22,14 @@ class Event {
       this.getWeekendDiscount();
     } else {
       this.getWeekdayDiscount();
+    }
+
+    if (isSpecialDay(this.expectedDate)) {
+      this.getSpecialDayDiscount();
+    }
+
+    if (this.totalPriceBeforeDiscount > NUMBERS.minFreeGiftPrice) {
+      this.getFreeGift();
     }
 
     return this.discountAmount;
@@ -60,6 +69,16 @@ class Event {
 
     this.discountAmount += Number(discountAmount);
     OutputView.printWeekdayDiscount(discountAmount);
+  }
+
+  getSpecialDayDiscount() {
+    OutputView.printSepcialDayDiscount(NUMBERS.specialDiscountAmount);
+    this.discountAmount += NUMBERS.specialDiscountAmount;
+  }
+
+  getFreeGift() {
+    OutputView.printFreeGiftEvent(NUMBERS.freeGiftAmount);
+    this.discountAmount += NUMBERS.freeGiftAmount;
   }
 }
 

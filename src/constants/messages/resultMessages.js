@@ -5,6 +5,8 @@ const RESULT_MESSAGES = Object.freeze({
   dDayDiscount: '크리스마스 디데이 할인',
   weekdayDiscount: '평일 할인',
   weekendDiscount: '주말 할인',
+  specialDayDiscount: '특별 할인',
+  freeGiftEvent: '증정 이벤트',
 });
 
 export default RESULT_MESSAGES;

@@ -9,7 +9,7 @@ const OutputView = {
   },
 
   printMenu(orderList) {
-    Console.print('<주문 메뉴>');
+    Console.print(HEADER_MESSAGES.orderMenu);
 
     orderList.forEach(order => {
       const [menu, quentity] = order;
@@ -48,6 +48,14 @@ const OutputView = {
 
   printWeekdayDiscount(discountAmount) {
     Console.print(`${RESULT_MESSAGES.weekdayDiscount}: -${discountAmount}원`);
+  },
+
+  printSepcialDayDiscount(discountAmount) {
+    Console.print(`${RESULT_MESSAGES.specialDayDiscount}: -${discountAmount}원`);
+  },
+
+  printFreeGiftEvent(freeGiftAmount) {
+    Console.print(`${RESULT_MESSAGES.freeGiftEvent}: -${freeGiftAmount}원`);
   },
 
   printError(error) {

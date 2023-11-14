@@ -6,6 +6,8 @@ const NUMBERS = Object.freeze({
   minEventAmount: 10000,
   christmasDate: 25,
   weekDiscountAmount: 2023,
+  specialDiscountAmount: 1000,
+  freeGiftAmount: 25000,
 });
 
 export default NUMBERS;
