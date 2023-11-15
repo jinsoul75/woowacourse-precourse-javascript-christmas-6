@@ -1,4 +1,4 @@
-const stringToObject = string => {
+const stringToArray = string => {
   const items = string.replace(/\s/g, '').split(',');
 
   const resultArray = [];
@@ -11,4 +11,4 @@ const stringToObject = string => {
   return resultArray;
 };
 
-export default stringToObject;
+export default stringToArray;
