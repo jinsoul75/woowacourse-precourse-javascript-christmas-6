@@ -17,33 +17,34 @@ class Event {
 
   getEvent() {
     if (this.expectedDate <= NUMBERS.christmasDate) {
-      this.getChristmasDdayDiscount();
+      this.#getChristmasDdayDiscount();
     }
 
     if (isWeekend(this.expectedDate)) {
-      this.getWeekendDiscount();
+      this.#getWeekendDiscount();
     } else {
-      this.getWeekdayDiscount();
+      this.#getWeekdayDiscount();
     }
 
     if (isSpecialDay(this.expectedDate)) {
-      this.getSpecialDayDiscount();
+      this.#getSpecialDayDiscount();
     }
 
     if (this.totalPriceBeforeDiscount > NUMBERS.minFreeGiftPrice) {
-      this.getFreeGift();
+      this.#getFreeGift();
     }
 
+    this.benefitAmount += this.discountAmount;
     return [this.discountAmount, this.benefitAmount];
   }
 
-  getChristmasDdayDiscount() {
+  #getChristmasDdayDiscount() {
     const discountAmount = dDayCalculator(this.expectedDate);
     this.discountAmount += Number(discountAmount);
     OutputView.printDdayDiscount(addCommasToNumber(discountAmount));
   }
 
-  getWeekendDiscount() {
+  #getWeekendDiscount() {
     let discountAmount = 0;
 
     this.orderList.forEach(order => {
@@ -60,7 +61,7 @@ class Event {
     }
   }
 
-  getWeekdayDiscount() {
+  #getWeekdayDiscount() {
     let discountAmount = 0;
 
     this.orderList.forEach(order => {
@@ -76,14 +77,14 @@ class Event {
     }
   }
 
-  getSpecialDayDiscount() {
+  #getSpecialDayDiscount() {
     OutputView.printSepcialDayDiscount(addCommasToNumber(NUMBERS.specialDiscountAmount));
     this.discountAmount += NUMBERS.specialDiscountAmount;
   }
 
-  getFreeGift() {
+  #getFreeGift() {
     OutputView.printFreeGiftEvent(addCommasToNumber(NUMBERS.freeGiftAmount));
-    this.benefitAmount += this.discountAmount + NUMBERS.freeGiftAmount;
+    this.benefitAmount += NUMBERS.freeGiftAmount;
   }
 }
 
