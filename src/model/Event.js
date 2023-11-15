@@ -9,6 +9,7 @@ import addCommasToNumber from '../utils/addCommasToNumber.js';
 class Event {
   constructor(expectedDate, orderList, totalPriceBeforeDiscount) {
     this.discountAmount = 0;
+    this.benefitAmount = 0;
     this.expectedDate = expectedDate;
     this.orderList = orderList;
     this.totalPriceBeforeDiscount = totalPriceBeforeDiscount;
@@ -33,12 +34,12 @@ class Event {
       this.getFreeGift();
     }
 
-    return this.discountAmount;
+    return [this.discountAmount, this.benefitAmount];
   }
 
   getChristmasDdayDiscount() {
     const discountAmount = dDayCalculator(this.expectedDate);
-    this.discountAmount -= Number(discountAmount);
+    this.discountAmount += Number(discountAmount);
     OutputView.printDdayDiscount(addCommasToNumber(discountAmount));
   }
 
@@ -49,12 +50,14 @@ class Event {
       const [menu, quentity] = order;
 
       if (Object.keys(MAIN).includes(menu)) {
-        discountAmount = NUMBERS.weekDiscountAmount * quentity;
+        discountAmount += NUMBERS.weekDiscountAmount * quentity;
       }
     });
 
-    this.discountAmount -= Number(discountAmount);
-    OutputView.printWeekendDiscount(addCommasToNumber(discountAmount));
+    if (discountAmount < 0) {
+      this.discountAmount += Number(discountAmount);
+      OutputView.printWeekendDiscount(addCommasToNumber(discountAmount));
+    }
   }
 
   getWeekdayDiscount() {
@@ -62,14 +65,15 @@ class Event {
 
     this.orderList.forEach(order => {
       const [menu, quentity] = order;
-
       if (Object.keys(DESERT).includes(menu)) {
-        discountAmount = NUMBERS.weekDiscountAmount * quentity;
+        discountAmount += NUMBERS.weekDiscountAmount * quentity;
       }
     });
 
-    this.discountAmount -= Number(discountAmount);
-    OutputView.printWeekdayDiscount(addCommasToNumber(discountAmount));
+    if (discountAmount < 0) {
+      this.discountAmount += Number(discountAmount);
+      OutputView.printWeekdayDiscount(addCommasToNumber(discountAmount));
+    }
   }
 
   getSpecialDayDiscount() {
@@ -79,7 +83,7 @@ class Event {
 
   getFreeGift() {
     OutputView.printFreeGiftEvent(addCommasToNumber(NUMBERS.freeGiftAmount));
-    this.discountAmount -= NUMBERS.freeGiftAmount;
+    this.benefitAmount += this.discountAmount + NUMBERS.freeGiftAmount;
   }
 }
 

@@ -18,6 +18,7 @@ class EventPlannerController {
     this.totalPriceBeforeDiscount = 0;
     this.event = [];
     this.totalDiscountAmount = 0;
+    this.totalBenefitAmount = 0;
     this.expectedPaymentAmount = 0;
     this.eventBadge = '';
   }
@@ -29,7 +30,7 @@ class EventPlannerController {
     this.getTotalPriceBeforeDiscount(this.orderList);
     this.getFreeGift();
     this.getEvent();
-    OutputView.printTotalDiscountAmount(addCommasToNumber(this.totalDiscountAmount));
+    OutputView.printTotalDiscountAmount(addCommasToNumber(this.totalBenefitAmount));
     this.getExpectedPaymentAmount();
     this.getEventBadge(this.expectedPaymentAmount);
   }
@@ -96,7 +97,7 @@ class EventPlannerController {
     }
 
     const event = new Event(this.expectedDate, this.orderList, this.totalPriceBeforeDiscount);
-    this.totalDiscountAmount = event.getEvent();
+    [this.totalDiscountAmount, this.totalBenefitAmount] = event.getEvent();
   }
 
   getExpectedPaymentAmount() {
@@ -105,7 +106,7 @@ class EventPlannerController {
   }
 
   getEventBadge() {
-    const badge = new Badge(this.totalDiscountAmount);
+    const badge = new Badge(Math.abs(this.totalBenefitAmount));
     this.eventBadge = badge.getEventBadge();
 
     OutputView.printEventBadgeHeader();
