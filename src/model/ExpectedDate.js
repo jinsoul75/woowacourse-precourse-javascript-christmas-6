@@ -1,5 +1,5 @@
-import ERROR_MESSAGES from '../constants/messages/errorMessages.js';
-import NUMBERS from '../constants/numbers/numbers.js';
+import ERROR_MESSAGES from '../constants/messages/errorMessages';
+import NUMBERS from '../constants/numbers/numbers';
 
 class ExpectedDate {
   #date;

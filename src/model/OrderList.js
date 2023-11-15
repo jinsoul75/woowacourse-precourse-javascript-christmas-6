@@ -1,7 +1,8 @@
-import NUMBERS from '../constants/numbers/numbers.js';
-import ERROR_MESSAGES from '../constants/messages/errorMessages.js';
-import { MENU, DRINK } from '../constants/menu/menu.js';
-import { getSecondLevelKeys } from '../utils/ObjectToArray.js';
+import NUMBERS from '../constants/numbers/numbers';
+import ERROR_MESSAGES from '../constants/messages/errorMessages';
+import { MENU, DRINK } from '../constants/menu/menu';
+
+import getSecondLevelKeys from '../utils/getSecondLevelKeys';
 
 class OrderList {
   #list;

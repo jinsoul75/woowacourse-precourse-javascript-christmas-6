@@ -1,5 +1,5 @@
-import BADGE from '../constants/badge/badge.js';
-import NUMBERS from '../constants/numbers/numbers.js';
+import BADGE from '../constants/badge/badge';
+import NUMBERS from '../constants/numbers/numbers';
 
 class Badge {
   constructor(totalBenefitAmount) {

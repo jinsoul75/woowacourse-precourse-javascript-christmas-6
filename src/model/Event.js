@@ -1,10 +1,12 @@
-import dDayCalculator from '../utils/dDayCalculator.js';
-import isWeekend from '../utils/isWeekend.js';
-import isSpecialDay from '../utils/isSpecialDay.js';
-import NUMBERS from '../constants/numbers/numbers.js';
-import { MAIN, DESERT } from '../constants/menu/menu.js';
-import OutputView from '../view/OutputView.js';
-import addCommasToNumber from '../utils/addCommasToNumber.js';
+import NUMBERS from '../constants/numbers/numbers';
+import { MAIN, DESERT } from '../constants/menu/menu';
+
+import addCommasToNumber from '../utils/addCommasToNumber';
+import dDayCalculator from '../utils/dDayCalculator';
+import isWeekend from '../utils/isWeekend';
+import isSpecialDay from '../utils/isSpecialDay';
+
+import OutputView from '../view/OutputView';
 
 class Event {
   constructor(expectedDate, orderList, totalPriceBeforeDiscount) {

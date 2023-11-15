@@ -1,4 +1,4 @@
-import EventPlannerController from './controller/EventPlannerController.js';
+import EventPlannerController from './controller/EventPlannerController';
 
 class App {
   async run() {

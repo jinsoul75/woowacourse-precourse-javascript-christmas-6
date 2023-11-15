@@ -1,15 +1,15 @@
-import ExpectedDate from '../model/ExpectedDate.js';
-import OrderList from '../model/OrderList.js';
-import Price from '../model/Price.js';
-import Event from '../model/Event.js';
-import Badge from '../model/Badge.js';
+import ExpectedDate from '../model/ExpectedDate';
+import OrderList from '../model/OrderList';
+import Price from '../model/Price';
+import Event from '../model/Event';
+import Badge from '../model/Badge';
 
-import stringToArray from '../utils/stringToArray.js';
-import addCommasToNumber from '../utils/addCommasToNumber.js';
+import stringToArray from '../utils/stringToArray';
+import addCommasToNumber from '../utils/addCommasToNumber';
 
-import InputView from '../view/InputView.js';
-import OutputView from '../view/OutputView.js';
-import NUMBERS from '../constants/numbers/numbers.js';
+import InputView from '../view/InputView';
+import OutputView from '../view/OutputView';
+import NUMBERS from '../constants/numbers/numbers';
 
 class EventPlannerController {
   constructor() {

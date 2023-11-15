@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import ASK_MESSAGES from '../constants/messages/askMessages.js';
+import ASK_MESSAGES from '../constants/messages/askMessages';
 
 const InputView = {
   async readDate() {

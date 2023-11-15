@@ -1,4 +1,4 @@
-import NUMBERS from '../numbers/numbers.js';
+import NUMBERS from '../numbers/numbers';
 
 const ERROR_MESSAGES = Object.freeze({
   errorHeader: '[ERROR]',

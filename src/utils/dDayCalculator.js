@@ -1,4 +1,4 @@
-import NUMBERS from '../constants/numbers/numbers.js';
+import NUMBERS from '../constants/numbers/numbers';
 
 const dDayCalculator = day => {
   let discountAmount = NUMBERS.dDayDiscountStandardAmount;

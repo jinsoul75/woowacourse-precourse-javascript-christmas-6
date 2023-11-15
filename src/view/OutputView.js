@@ -1,7 +1,8 @@
 import { Console } from '@woowacourse/mission-utils';
-import ERROR_MESSAGES from '../constants/messages/errorMessages.js';
-import HEADER_MESSAGES from '../constants/messages/headerMeassages.js';
-import RESULT_MESSAGES from '../constants/messages/resultMessages.js';
+
+import ERROR_MESSAGES from '../constants/messages/errorMessages';
+import HEADER_MESSAGES from '../constants/messages/headerMeassages';
+import RESULT_MESSAGES from '../constants/messages/resultMessages';
 
 const OutputView = {
   printIntro(day) {
@@ -67,12 +68,15 @@ const OutputView = {
     Console.print(HEADER_MESSAGES.expectedPaymentAmount);
     Console.print(RESULT_MESSAGES.expectedPaymentAmount(expectedPaymentAmount));
   },
+
   printEventBadgeHeader() {
     Console.print(HEADER_MESSAGES.eventBadge);
   },
+
   printEventBadge(badge) {
     Console.print(badge);
   },
+
   printError(error) {
     Console.print(`${ERROR_MESSAGES.errorHeader} ${error.message}`);
   },

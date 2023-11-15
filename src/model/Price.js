@@ -1,4 +1,4 @@
-import { MENU } from '../constants/menu/menu.js';
+import { MENU } from '../constants/menu/menu';
 
 class Price {
   constructor(orderList) {
