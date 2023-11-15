@@ -26,7 +26,7 @@ class EventPlannerController {
   async start() {
     await this.getExpectedDate();
     await this.getOrderList();
-    OutputView.printMenu(this.orderList);
+
     this.getTotalPriceBeforeDiscount(this.orderList);
     this.getFreeGift();
     this.getEvent();
@@ -62,6 +62,7 @@ class EventPlannerController {
       orderList.isOverTwenty();
       orderList.isOnlyDrinks();
 
+      OutputView.printMenu(this.orderList);
       OutputView.printIntro(this.expectedDate);
     } catch (error) {
       OutputView.printError(error);
@@ -98,6 +99,10 @@ class EventPlannerController {
 
     const event = new Event(this.expectedDate, this.orderList, this.totalPriceBeforeDiscount);
     [this.totalDiscountAmount, this.totalBenefitAmount] = event.getEvent();
+
+    if (this.totalDiscountAmount === 0 || this.totalBenefitAmount === 0) {
+      OutputView.printNothing();
+    }
   }
 
   getExpectedPaymentAmount() {
