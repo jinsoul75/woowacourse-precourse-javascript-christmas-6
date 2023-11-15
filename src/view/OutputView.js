@@ -39,23 +39,23 @@ const OutputView = {
   },
 
   printDdayDiscount(discountAmount) {
-    Console.print(`${RESULT_MESSAGES.dDayDiscount}: -${discountAmount}원`);
+    Console.print(`${RESULT_MESSAGES.dDayDiscount}: ${discountAmount}원`);
   },
 
   printWeekendDiscount(discountAmount) {
-    Console.print(`${RESULT_MESSAGES.weekendDiscount}: -${discountAmount}원`);
+    Console.print(`${RESULT_MESSAGES.weekendDiscount}: ${discountAmount}원`);
   },
 
   printWeekdayDiscount(discountAmount) {
-    Console.print(`${RESULT_MESSAGES.weekdayDiscount}: -${discountAmount}원`);
+    Console.print(`${RESULT_MESSAGES.weekdayDiscount}: ${discountAmount}원`);
   },
 
   printSepcialDayDiscount(discountAmount) {
-    Console.print(`${RESULT_MESSAGES.specialDayDiscount}: -${discountAmount}원`);
+    Console.print(`${RESULT_MESSAGES.specialDayDiscount}: ${discountAmount}원`);
   },
 
   printFreeGiftEvent(freeGiftAmount) {
-    Console.print(`${RESULT_MESSAGES.freeGiftEvent}: -${freeGiftAmount}원`);
+    Console.print(`${RESULT_MESSAGES.freeGiftEvent}: ${freeGiftAmount}원`);
   },
 
   printTotalDiscountAmount(totalDiscountAmount) {
