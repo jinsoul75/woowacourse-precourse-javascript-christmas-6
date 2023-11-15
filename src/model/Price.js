@@ -8,7 +8,6 @@ class Price {
 
   getTotalPriceBeforeDiscount(orderList) {
     let totalPrice = 0;
-
     orderList.forEach(order => {
       const [menu, quentity] = order;
       totalPrice += Number(this.getEachPrice(menu)) * quentity;
@@ -24,7 +23,6 @@ class Price {
       if (category[menu]) {
         this.eachPrice = category[menu];
       }
-      return this.eachPrice;
     });
 
     return this.eachPrice;
