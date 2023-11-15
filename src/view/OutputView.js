@@ -58,9 +58,9 @@ const OutputView = {
     Console.print(`${RESULT_MESSAGES.freeGiftEvent}: ${freeGiftAmount}원`);
   },
 
-  printTotalDiscountAmount(totalDiscountAmount) {
-    Console.print(HEADER_MESSAGES.totalDiscountAmount);
-    Console.print(`${totalDiscountAmount}원`);
+  printTotalBenefitAmount(totalBenefitAmount) {
+    Console.print(HEADER_MESSAGES.totalBenefitAmount);
+    Console.print(`${totalBenefitAmount}원`);
   },
 
   printExpectedPaymentAmount(expectedPaymentAmount) {

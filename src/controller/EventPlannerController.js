@@ -30,7 +30,7 @@ class EventPlannerController {
     this.getTotalPriceBeforeDiscount(this.orderList);
     this.getFreeGift();
     this.getEvent();
-    OutputView.printTotalDiscountAmount(addCommasToNumber(this.totalBenefitAmount));
+    OutputView.printTotalBenefitAmount(addCommasToNumber(this.totalBenefitAmount));
     this.getExpectedPaymentAmount();
     this.getEventBadge(this.expectedPaymentAmount);
   }
@@ -111,12 +111,7 @@ class EventPlannerController {
 
     OutputView.printEventBadgeHeader();
 
-    if (this.eventBadge) {
-      OutputView.printEventBadge(this.eventBadge);
-      return;
-    }
-
-    OutputView.printNothing();
+    OutputView.printEventBadge(this.eventBadge);
   }
 }
 

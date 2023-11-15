@@ -4,7 +4,7 @@ import NUMBERS from '../constants/numbers/numbers.js';
 class Badge {
   constructor(totalBenefitAmount) {
     this.totalBenefitAmount = totalBenefitAmount;
-    this.badge = '';
+    this.badge = BADGE.nothing;
   }
 
   getEventBadge() {
