@@ -4,7 +4,7 @@ import Price from '../model/Price.js';
 import Event from '../model/Event.js';
 import Badge from '../model/Badge.js';
 
-import stringToObject from '../utils/stringToObject.js';
+import stringToArray from '../utils/stringToArray.js';
 import addCommasToNumber from '../utils/addCommasToNumber.js';
 
 import InputView from '../view/InputView.js';
@@ -52,7 +52,7 @@ class EventPlannerController {
   async getOrderList() {
     try {
       const orderListInput = await InputView.readOrder();
-      this.orderList = stringToObject(orderListInput);
+      this.orderList = stringToArray(orderListInput);
       const orderList = new OrderList(this.orderList);
 
       orderList.contains();
@@ -105,7 +105,7 @@ class EventPlannerController {
   }
 
   getEventBadge() {
-    const badge = new Badge(this.expectedPaymentAmount);
+    const badge = new Badge(this.totalDiscountAmount);
     this.eventBadge = badge.getEventBadge();
 
     OutputView.printEventBadgeHeader();

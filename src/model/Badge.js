@@ -2,23 +2,23 @@ import BADGE from '../constants/badge/badge.js';
 import NUMBERS from '../constants/numbers/numbers.js';
 
 class Badge {
-  constructor(expectedPaymentAmount) {
-    this.expectedPaymentAmount = expectedPaymentAmount;
+  constructor(totalDiscountAmount) {
+    this.totalDiscountAmount = totalDiscountAmount;
     this.badge = '';
   }
 
   getEventBadge() {
-    if (this.expectedPaymentAmount >= NUMBERS.santaBadgeAmount) {
+    if (this.totalDiscountAmount >= NUMBERS.santaBadgeAmount) {
       this.badge = BADGE.santa;
       return this.badge;
     }
 
-    if (this.expectedPaymentAmount >= NUMBERS.treeBadgeAmount) {
+    if (this.totalDiscountAmount >= NUMBERS.treeBadgeAmount) {
       this.badge = BADGE.tree;
       return this.badge;
     }
 
-    if (this.expectedPaymentAmount >= NUMBERS.starBadgeAmount) {
+    if (this.totalDiscountAmount >= NUMBERS.starBadgeAmount) {
       this.badge = BADGE.star;
       return this.badge;
     }
